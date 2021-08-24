@@ -1,0 +1,146 @@
+{% extends 'hotels/web/template.html' %}
+{% block title %}Booking Hotels{% endblock %}
+
+
+<!--start menu -->
+{% block active_menu %}
+<ul class="menu">
+	<li class="active"><a href="index">hotel</a></li> |
+	<li><a href="rooms">rooms & suits</a></li> |
+	<li><a href="reservation">reservation</a></li> |
+	<li><a href="activities">activities</a></li> |
+	<li><a href="contact">contact</a></li>
+	<div class="clear"></div>
+</ul>
+{% endblock %}
+
+
+<!--start main -->
+{% block content %}
+<div class="main_bg" id="container">
+	<div class="wrap">
+		<div class="online_reservation">
+			<div class="b_room">
+				<div class="booking_room">
+					<h4>book a room online</h4>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+				</div>
+				<div class="reservation">
+					<ul>
+
+							<li class="span1_of_1 left">
+								<h5>Kind of hotels:</h5>
+								<!----------start section_hotel----------->
+								<div class="section_hotel"  >
+									<select id="country" onchange="change_country(this.value)" class="frm-field required" >
+										<option value="" disabled selected>Select a hotel</option>
+										<option value="${ hotel.index }$" v-for='hotel in hotels'>${ hotel.hotel_name }$</option>
+									</select>
+								</div>
+							</li>
+							<li class="span1_of_1 left">
+								<h5>size of room:</h5>
+								<!----------start section_room----------->
+								<div class="section_room">
+									<select id="country" onchange="change_country(this.value)" class="frm-field required">
+										<option value="" disabled selected>Select a size of room</option>
+										<option value="${ room.index }$" v-for='room in rooms'>${ room.quantity_room }$</option>
+									</select>
+								</div>
+							</li>												
+							<li class="span1_of_1 left">
+								<h5>type of room:</h5>
+								<!----------start section_room_type----------->
+								<div class="section_room_type">
+									<select id="country" onchange="change_country(this.value)" class="frm-field required" >
+										<option value="" disabled selected>Select a type of room</option>
+										<option value="${ room.index }$" v-for='room in rooms'>${ room.type_room }$</option>
+									</select>
+								</div>
+							</li>
+						<li class="span1_of_1 left">
+							<h5>check-in-date:</h5>
+							<div class="book_date">
+								<form>
+									<input class="date" id="datepicker" type="text" value="DD/MM/YY"
+										onfocus="this.value = '';"
+										onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
+								</form>
+
+							</div>
+						</li>
+						<li class="span1_of_1 left">
+							<h5>check-out-date:</h5>
+							<div class="book_date">
+								<form>
+									<input class="date" id="datepicker1" type="text" value="DD/MM/YY"
+										onfocus="this.value = '';"
+										onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
+								</form>
+							</div>
+						</li>
+						<li class="span1_of_2 left">
+							<h5>Adults:</h5>
+							<!----------start section_room----------->
+							<div class="section_room">
+								<select id="country" onchange="change_country(this.value)" class="frm-field required">
+									<option value="null">1</option>
+									<option value="null">2</option>
+									<option value="AX">3</option>
+									<option value="AX">4</option>
+								</select>
+							</div>
+						</li>
+						<li class="span1_of_3">
+							<div class="date_btn">
+								<form>
+									<input type="submit" value="search now" />
+								</form>
+							</div>
+						</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--start grids_of_3 -->
+		<div class="grids_of_3">
+			<div class="grid1_of_3">
+				<div class="grid1_of_3_img">
+					<a href="details">						
+						<img src="../../../static/images/pic2.jpg" alt="" />
+						<span class="next"> </span>
+					</a>
+				</div>
+				<h4><a href="#">single room<span>120$</span></a></h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+			</div>
+			<div class="grid1_of_3">
+				<div class="grid1_of_3_img">
+					<a href="details">
+						<img src="../../../static/images/pic1.jpg" alt="" />
+						<span class="next"> </span>
+					</a>
+				</div>
+				<h4><a href="#">double room<span>180$</span></a></h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+			</div>
+			<template v-for='room in rooms'>
+				<div class="grid1_of_3"  v-for="item in rooms">
+					<div class="grid1_of_3_img">
+						<a href="details">						
+							<img src="../../../static/images/pic3.jpg" alt="" />
+							<span class="next"> </span>
+						</a>
+					</div>
+					<h4><a href="#">${ room.quantity_room }$<span>${ room.price }$ UZS</span></a></h4>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+				</div>
+		</template>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+<!--start main -->
+{% endblock %}
